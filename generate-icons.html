@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Generar Iconos PWA</title>
+  </head>
+  <body>
+    <h1>Generador de Iconos PWA</h1>
+    <canvas id="canvas192" width="192" height="192"></canvas>
+    <canvas id="canvas512" width="512" height="512"></canvas>
+    <canvas id="canvasApple" width="180" height="180"></canvas>
+
+    <div>
+      <button onclick="downloadIcons()">Descargar Iconos</button>
+    </div>
+
+    <script>
+      function createIcon(canvas, size, text) {
+        const ctx = canvas.getContext("2d");
+
+        // Fondo negro
+        ctx.fillStyle = "#000000";
+        ctx.fillRect(0, 0, size, size);
+
+        // Texto amarillo
+        ctx.fillStyle = "#EAB308";
+        ctx.font = `bold ${size / 3}px Arial`;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(text, size / 2, size / 2);
+      }
+
+      createIcon(document.getElementById("canvas192"), 192, "DS");
+      createIcon(document.getElementById("canvas512"), 512, "DS");
+      createIcon(document.getElementById("canvasApple"), 180, "DS");
+
+      function downloadIcons() {
+        // Descargar 192x192
+        const canvas192 = document.getElementById("canvas192");
+        const link192 = document.createElement("a");
+        link192.download = "pwa-192x192.png";
+        link192.href = canvas192.toDataURL();
+        link192.click();
+
+        // Descargar 512x512
+        setTimeout(() => {
+          const canvas512 = document.getElementById("canvas512");
+          const link512 = document.createElement("a");
+          link512.download = "pwa-512x512.png";
+          link512.href = canvas512.toDataURL();
+          link512.click();
+        }, 500);
+
+        // Descargar apple-touch-icon
+        setTimeout(() => {
+          const canvasApple = document.getElementById("canvasApple");
+          const linkApple = document.createElement("a");
+          linkApple.download = "apple-touch-icon.png";
+          linkApple.href = canvasApple.toDataURL();
+          linkApple.click();
+        }, 1000);
+      }
+    </script>
+  </body>
+</html>
