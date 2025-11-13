@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Characters from "./pages/Characters";
 import Header from "./components/Header";
+import InstallPWA from "./components/InstallPWA";
 import { FilterProvider } from "./context/FilterContext";
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Characters" element={<Characters />} />
       </Routes>
+      <InstallPWA />
     </FilterProvider>
   );
 }
